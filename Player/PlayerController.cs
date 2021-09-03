@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+namespace PlayerSystems 
+{ 
+    public class PlayerController : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private Player _player { get; set; }
+        private PlayerInputAction _inputAction { get; set; }
+        private PlayerStateMachine _stateMachine { get; set; }
     }
 }
