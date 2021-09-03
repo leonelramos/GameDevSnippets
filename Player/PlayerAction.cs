@@ -7,6 +7,6 @@ namespace PlayerSystems
     public enum PlayerAction
     {
         JumpAction,
-
+        MoveAction,
     }
 }
