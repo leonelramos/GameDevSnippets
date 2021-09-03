@@ -12,6 +12,12 @@ public class Kinematics
     public Vector3 Spin { get; set; }
     public Vector3 Rotation { get; set; }
     public float DeltaTime { get; set; }
+
+    public Kinematics(IntegratorDelegate integrator)
+    {
+        Integrator = integrator;
+    }
+
     public void Integrate()
     {
         (Vector3 Position, Vector3 Velocity) result = Integrator(Position, Velocity, Acceleration, DeltaTime);

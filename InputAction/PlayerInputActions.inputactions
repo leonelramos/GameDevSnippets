@@ -1,0 +1,21 @@
+{
+    "name": "PlayerInputActions",
+    "maps": [
+        {
+            "name": "MainActionMap",
+            "id": "01dfaa31-62ec-4d3b-990f-ed7fde16684d",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Value",
+                    "id": "8f0fd0cf-ed33-484e-9d4b-f43b37a90a82",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": []
+        }
+    ],
+    "controlSchemes": []
+}
