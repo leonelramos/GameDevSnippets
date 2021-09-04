@@ -2,30 +2,34 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace PlayerSystems 
 { 
     public class PlayerController : MonoBehaviour
     {
-        private Transform _player;
-        [field: SerializeField] private PlayerModel _model;
-        private Kinematics _kinematics;
-        private PlayerStateMachine _stateMachine;
-        private PlayerInputAction _inputAction;
+        [SerializeField] private InputActionAsset _actionAsset;
+        [SerializeField] private PlayerModel _model;
 
+        private PlayerInputAction _inputAction;
+        private Transform _player;
+        private PlayerStateMachine _stateMachine;
+        private Kinematics _kinematics;
+        
         private void Start()
         {
-            _player = GetComponent<Transform>();
+            _inputAction = gameObject.AddComponent<PlayerInputAction>();
+            _inputAction.Init(_actionAsset);
             _model = new PlayerModel();
+            _player = GetComponent<Transform>();
             _stateMachine = new PlayerStateMachine();
-            _inputAction = new PlayerInputAction();
             _kinematics = new Kinematics(Integrators.ConstantAccel);
         }
 
         private void Update()
         {
-            UpdateKinematics();
-            UpdatePlayer();
+           // UpdateKinematics();
+           // UpdatePlayer();
         }
 
         private void UpdatePlayer()

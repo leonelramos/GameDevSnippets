@@ -6,15 +6,141 @@
             "id": "01dfaa31-62ec-4d3b-990f-ed7fde16684d",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Value",
+                    "name": "JumpAction",
+                    "type": "Button",
                     "id": "8f0fd0cf-ed33-484e-9d4b-f43b37a90a82",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "MoveUpAction",
+                    "type": "Value",
+                    "id": "a233d3c2-ad8f-43d6-bed8-d27aeb4183fd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold,Tap"
+                },
+                {
+                    "name": "MoveDownAction",
+                    "type": "Value",
+                    "id": "57184392-20de-42d2-9e41-8299e9a6cafe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MoveLeftAction",
+                    "type": "Value",
+                    "id": "483c6da2-a8da-464e-8e03-d54263960d1b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MoveRightAction",
+                    "type": "Value",
+                    "id": "2f3a5fa1-e917-4ba5-8082-902a37352ad7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "InteractAction",
+                    "type": "Button",
+                    "id": "022d5cac-60d3-4783-a5e7-dffb889bdd00",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LookAction",
+                    "type": "Value",
+                    "id": "5e6199d8-0d40-42a8-9dba-9bdde280c3c5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
-            "bindings": []
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b737c094-24ed-4c88-953c-87a5616ce4d6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a05cda82-da77-43f3-abc6-dcf030e9e5b8",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveUpAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f406643-f212-4f6d-bd82-ae19c6fd12c9",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveDownAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6faa181-5f45-4ab3-8cd3-65afef314c9c",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveLeftAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01fc527c-69a7-4c0d-9119-896db56e3fa3",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveRightAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "99f446f8-55dc-4230-b87d-5b87ddb1ed65",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InteractAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96e5a405-08c9-4cbf-b1e7-5929afdbdc9c",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LookAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
