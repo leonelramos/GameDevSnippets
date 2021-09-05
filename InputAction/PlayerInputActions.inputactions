@@ -19,7 +19,7 @@
                     "id": "a233d3c2-ad8f-43d6-bed8-d27aeb4183fd",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold,Tap"
+                    "interactions": ""
                 },
                 {
                     "name": "MoveDownAction",
@@ -78,7 +78,7 @@
                     "name": "",
                     "id": "a05cda82-da77-43f3-abc6-dcf030e9e5b8",
                     "path": "<Keyboard>/w",
-                    "interactions": "",
+                    "interactions": "Hold(duration=2.5,pressPoint=0.5)",
                     "processors": "",
                     "groups": "",
                     "action": "MoveUpAction",

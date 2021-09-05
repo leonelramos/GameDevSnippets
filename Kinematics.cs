@@ -13,8 +13,10 @@ public class Kinematics
     public Vector3 Rotation { get; set; }
     public float DeltaTime { get; set; }
 
-    public Kinematics(IntegratorDelegate integrator)
+    public Kinematics(IntegratorDelegate integrator, Vector3 position)
     {
+        Position = position;
+        Velocity = Acceleration = Spin = Rotation = Vector3.zero;
         Integrator = integrator;
     }
 

@@ -1,46 +1,62 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace PlayerSystems 
-{ 
+namespace PlayerSystems
+{
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private InputActionAsset _actionAsset;
-        [SerializeField] private PlayerModel _model;
+        [SerializeField] private InputActionAsset _playerActionAsset;
+        [SerializeField] private Actor _player;
+        [SerializeField] private ActorModel _model;
 
         private PlayerInputAction _inputAction;
-        private Transform _player;
         private PlayerStateMachine _stateMachine;
         private Kinematics _kinematics;
         
         private void Start()
         {
             _inputAction = gameObject.AddComponent<PlayerInputAction>();
-            _inputAction.Init(_actionAsset);
-            _model = new PlayerModel();
-            _player = GetComponent<Transform>();
-            _stateMachine = new PlayerStateMachine();
-            _kinematics = new Kinematics(Integrators.ConstantAccel);
+            _inputAction.Init(_playerActionAsset);
+            _model = new ActorModel();
+            _kinematics = new Kinematics(Integrators.ConstantAccel, transform.position);
+            _player = new Actor(transform, _model, _kinematics);
+            _stateMachine = new PlayerStateMachine(_player, new GroundedState(_player));
         }
 
         private void Update()
         {
-           // UpdateKinematics();
-           // UpdatePlayer();
+            PlayerAction playerInputAction;
+            int playerActionValue;
+
+            UpdateInputPlayerAction(out playerInputAction, out playerActionValue);
+            UpdateStateMachine(playerInputAction, playerActionValue);
+            UpdateKinematics();
+            UpdatePlayer();
         }
 
-        private void UpdatePlayer()
+        private void UpdateInputPlayerAction(out PlayerAction playerInputAction, out int playerActionValue)
         {
-            _player.position = _kinematics.Position;
+            playerInputAction = _inputAction.Action;
+            playerActionValue = _inputAction.ActionValue;
+            _inputAction.UpdateAction();
+        }
+
+        private void UpdateStateMachine(PlayerAction playerInputAction, int playerActionValue)
+        {
+            _stateMachine.QueueInputAction(playerInputAction, playerActionValue);
+            _stateMachine.Execute();
         }
 
         private void UpdateKinematics()
         {
+            _kinematics.Position = _player.Transform.position;
             _kinematics.DeltaTime = Time.deltaTime;
             _kinematics.Integrate();
+        }
+
+        private void UpdatePlayer()
+        {
+            _player.Transform.position = _kinematics.Position;
         }
     }
 }

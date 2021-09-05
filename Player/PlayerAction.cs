@@ -8,7 +8,12 @@ namespace PlayerSystems
     public enum PlayerAction
     {
         JumpAction,
-        MoveAction,
         InteractAction,
+        WalkAction,
+        MoveUpAction,
+        MoveLeftAction,
+        MoveRightAction,
+        MoveDownAction,
+        None
     }
 }

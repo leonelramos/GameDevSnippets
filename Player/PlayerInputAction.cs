@@ -10,6 +10,10 @@ namespace PlayerSystems
     {
         private PlayerInput _playerInput;
         private readonly string _mainActionMap = "MainActionMap";
+        private bool _actionEnded = false;
+
+        public PlayerAction Action { get; set; }
+        public int ActionValue { get; set; }
 
         public void Init(InputActionAsset actionAsset)
         {
@@ -18,37 +22,63 @@ namespace PlayerSystems
             _playerInput.notificationBehavior = PlayerNotifications.BroadcastMessages;
             _playerInput.defaultActionMap = _mainActionMap;
             _playerInput.currentActionMap = actionAsset.FindActionMap(_mainActionMap);
-            _playerInput.currentActionMap.Enable();            
+            _playerInput.currentActionMap.Enable();
+
+            Action = PlayerAction.None;
+            ActionValue = 0;
         }
 
-        private void OnJumpAction()
+        public void UpdateAction()
         {
-            Debug.Log("Jumped");
+            if (_actionEnded)
+            {
+                Action = PlayerAction.None;
+            }
         }
 
-        private void OnInteractAction()
+        private void OnJumpAction(InputValue inputValue)
         {
-            Debug.Log("Interacted");
+            SetActionContext(PlayerAction.JumpAction, inputValue.Get<int>());
         }
 
-        private void OnMoveUpAction()
+        private void OnInteractAction(InputValue inputValue)
         {
-            Debug.Log("Moving Up");
+            SetActionContext(PlayerAction.InteractAction, inputValue.Get<int>());
         }
 
-        private void OnMoveDownAction()
+        private void OnMoveUpAction(InputValue inputValue)
         {
-            Debug.Log("Moving Down");
+            SetActionContext(PlayerAction.MoveUpAction, inputValue.Get<int>());
         }
 
-        private void OnMoveLeftAction()
+        private void OnMoveDownAction(InputValue inputValue)
         {
-            Debug.Log("Moving Left");
+            SetActionContext(PlayerAction.MoveDownAction, inputValue.Get<int>());
         }
 
-        private void OnMoveRightAction()
+        private void OnMoveLeftAction(InputValue inputValue)
         {
-            Debug.Log("Moving Right");
+            SetActionContext(PlayerAction.MoveLeftAction, inputValue.Get<int>());
+        }
+
+        private void OnMoveRightAction(InputValue inputValue)
+        {
+            SetActionContext(PlayerAction.MoveRightAction, inputValue.Get<int>());
+        }
+
+        private void SetActionContext(PlayerAction action, int actionValue)
+        {
+            Action = action;
+            ActionValue = actionValue;
+
+            if (actionValue == 0)
+            {
+                _actionEnded = true;
+            }
+            else
+            {
+                _actionEnded = false;
+            }
         }
     }
 }

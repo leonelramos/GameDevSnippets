@@ -7,22 +7,25 @@ using UnityEngine;
 namespace PlayerSystems
 { 
     [Serializable]
-    public class PlayerModel
+    public class ActorModel
     {
         [field: Range(0, float.MaxValue)]
         [field: SerializeField]
-        private float Mass { get; set; }
+        public float Mass { get; set; }
 
         [field: SerializeField]
-        private Vector3 MaxVelocity { get; set; }
+        public Vector3 MaxVelocity { get; set; }
 
         [field: SerializeField]
-        private Vector3 MaxAcceleration { get; set; }
+        public Vector3 MaxAcceleration { get; set; }
 
         [field: SerializeField]
-        private Vector3 MaxSpin { get; set; }
+        public Vector3 MaxSpin { get; set; }
 
         [field: SerializeField]
-        private Vector3 MaxRotation { get; set; }
+        public Vector3 MaxRotation { get; set; }
+
+        [field: SerializeField]
+        public float WalkSpeed { get; set; }
     }
 }
